@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS todo_app;
 DROP USER IF EXISTS michael;
 CREATE USER michael WITH ENCRYPTED PASSWORD 'stonebreaker';
 CREATE DATABASE todo_app;
-\c "todo_app";
+\c 'todo_app';
 
 CREATE TABLE tasks (
   id    SERIAL,
@@ -61,7 +61,7 @@ SELECT
 title
 FROM tasks
 WHERE 
-  title LIKE 'mistake%';
+  title ~ 'mistake';
 
 DELETE 
 FROM tasks
@@ -72,11 +72,11 @@ title
 description
 FROM tasks
 WHERE 
-  title LIKE 'mistake%';
+  title ~ 'mistake';
 
 DELETE 
 FROM tasks
-WHERE title LIKE 'mistake%';
+WHERE title ~ 'mistake';
 
 SELECT
 *
